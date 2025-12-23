@@ -86,6 +86,44 @@ checkCycled path =
     cycled <- sanitizeSvg (cycleSvg raw)
     return (golden == cycled)
 
+checkCycledWithDump :: FilePath -> IO Bool
+checkCycledWithDump path =
+  handle (\ExitCodeException{} -> return False) $
+  handle (\ErrorCall{} -> return False) $ do
+    raw <- readFile path
+    let cycledRaw = cycleSvg raw
+    
+    -- Get the actual bytestrings being compared
+    golden <- sanitizeSvg raw
+    cycled <- sanitizeSvg cycledRaw
+
+    let baseName = takeBaseName path
+    let dumpDir = "test/debug_dump"
+    createDirectoryIfMissing True dumpDir
+    
+    -- 1. Dump the actual compared bytestrings as PNG files
+    BS.writeFile (dumpDir </> baseName ++ "_golden.png") golden
+    BS.writeFile (dumpDir </> baseName ++ "_cycled.png") cycled
+    
+    -- 2. Also dump the SVG strings for reference
+    writeFile (dumpDir </> baseName ++ "_original.svg") raw
+    writeFile (dumpDir </> baseName ++ "_cycled.svg") cycledRaw
+    
+    -- 3. Create a visual diff if you have ImageMagick installed
+    -- handle (\_ -> return ()) $ do  -- Optional: ignore diff failures
+    --   () <- readProcess_ $ proc "compare" 
+    --     ["-compose", "src", 
+    --      dumpDir </> baseName ++ "_golden.png",
+    --      dumpDir </> baseName ++ "_cycled.png",
+    --      dumpDir </> baseName ++ "_diff.png"]
+    --   return ()
+    
+    putStrLn $ "Debug files for failed test written to " ++ dumpDir
+    putStrLn $ "Compare: " ++ dumpDir </> baseName ++ "_golden.png vs " 
+              ++ dumpDir </> baseName ++ "_cycled.png"
+    
+    return (golden == cycled)
+
 testSvg :: FilePath -> TestTree
 testSvg path = testCase (takeBaseName path) $
   assert =<< checkCycled path
