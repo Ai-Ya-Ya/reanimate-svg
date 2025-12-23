@@ -34,7 +34,7 @@ main = do
       haveFile <- doesFileExist path
       if haveFile
         then do
-          passed <- checkCycled path
+          passed <- checkCycledWithDump path
           if passed
             then putStrLn "Good"
             else putStrLn "Mismatch!"
