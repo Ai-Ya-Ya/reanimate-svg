@@ -664,70 +664,73 @@ instance WithDefaultSvg FilterAttributes where
 --
 -- All these attributes are propagated to the children.
 data DrawAttributes = DrawAttributes
-  { -- | Corresponds to the @stroke-width@ SVG attribute.
+  { -- | Attribute corresponding to the `stroke-width`
+    -- SVG attribute.
     _strokeWidth :: !(Maybe Number),
-    -- | Corresponds to the @stroke@ SVG attribute.
+    -- | Correspond to the `stroke` attribute.
     _strokeColor :: !(Maybe Texture),
-    -- | Define the @stroke-opacity@ SVG attribute, the transparency
+    -- | Define the `stroke-opacity` attribute, the transparency
     -- for the "border".
     _strokeOpacity :: !(Maybe Float),
-    -- | Corresponds to the @stroke-linecap@ SVG attribute.
+    -- | Correspond to the `stroke-linecap` SVG
+    -- attribute
     _strokeLineCap :: !(Maybe Cap),
-    -- | Corresponds to the @stroke-linejoin@ SVG attribute.
+    -- | Correspond to the `stroke-linejoin` SVG
+    -- attribute
     _strokeLineJoin :: !(Maybe LineJoin),
-    -- | Defines the distance of the miter join, corresponds
-    -- to the @stroke-miterlimit@ attritbue.
+    -- | Define the distance of the miter join, correspond
+    -- to the `stroke-miterlimit` attritbue.
     _strokeMiterLimit :: !(Maybe Double),
-    -- | Define the fill color of the elements. Corresponds
-    -- to the @fill@ SVG attribute.
+    -- | Define the filling color of the elements. Corresponding
+    -- to the `fill` attribute.
     _fillColor :: !(Maybe Texture),
-    -- | Define the @fill-opacity@ SVG attribute, the transparency
+    -- | Define the `fill-opacity` attribute, the transparency
     -- for the "content".
     _fillOpacity :: !(Maybe Float),
     -- | Defines the global or group opacity attribute.
     _groupOpacity :: !(Maybe Float),
     -- | Content of the @transform@ SVG attribute.
     _transform :: !(Maybe [Transformation]),
-    -- | Defines the @fill-rule@ used during the rendering.
+    -- | Define the `fill-rule` used during the rendering.
     _fillRule :: !(Maybe FillRule),
-    -- | Defines the @mask@ SVG attribute.
+    -- | Define the `mask` attribute.
     _maskRef :: !(Maybe ElementRef),
-    -- | Defines the @clip-path@ SVG attribute.
+    -- | Define the `clip-path` attribute.
     _clipPathRef :: !(Maybe ElementRef),
-    -- | Defines the @clip-rule@ SVG attribute.
+    -- | Define the `clip-rule` attribute.
     _clipRule :: !(Maybe FillRule),
-    -- | Map to the @class@ SVG attribute. Used for the CSS
+    -- | Map to the `class` attribute. Used for the CSS
     -- rewriting.
     _attrClass :: ![T.Text],
     -- | Map to the @id@ SVG attribute. Used for the CSS
     -- rewriting.
     _attrId :: !(Maybe String),
-    -- | Defines the start distance of the dashing pattern.
-    -- Corresponds to the @stroke-dashoffset@ SVG attribute.
+    -- | Define the start distance of the dashing pattern.
+    -- Correspond to the `stroke-dashoffset` attribute.
     _strokeOffset :: !(Maybe Number),
-    -- | Defines the dashing pattern for the lines. Corresponds
-    -- to the @stroke-dasharray@ SVG attribute.
+    -- | Define the dashing pattern for the lines. Correspond
+    -- to the `stroke-dasharray` attribute.
     _strokeDashArray :: !(Maybe [Number]),
-    -- | Current size of the text, corresponds to the
-    -- @font-size@ SVG attribute.
+    -- | Current size of the text, correspond to the
+    -- `font-size` SVG attribute.
     _fontSize :: !(Maybe Number),
-    -- | Defines the possible fonts to be used for text rendering.
-    -- Maps to the @font-family@ SVG attribute.
+    -- | Define the possible fonts to be used for text rendering.
+    -- Map to the `font-family` attribute.
     _fontFamily :: !(Maybe [String]),
-    -- | Maps to the @font-style@ SVG attribute.
+    -- | Map to the `font-style` attribute.
     _fontStyle :: !(Maybe FontStyle),
-    -- | Defines how to interpret the text position, corresponds
-    -- to the @text-anchor@ SVG attribute.
+    -- | Define how to interpret the text position, correspond
+    -- to the `text-anchor` attribute.
     _textAnchor :: !(Maybe TextAnchor),
-    -- | Defines the marker used for the start of the line.
-    -- Corresponds to the @marker-start@ SVG attribute.
+    -- | Define the marker used for the start of the line.
+    -- Correspond to the `marker-start` attribute.
     _markerStart :: !(Maybe ElementRef),
-    -- | Defines the marker used for every point of the
-    -- polyline/path. Corresponds to the @marker-mid@
+    -- | Define the marker used for every point of the
+    -- polyline/path Correspond to the `marker-mid`
     -- attribute.
     _markerMid :: !(Maybe ElementRef),
-    -- | Defines the marker used for the end of the line.
-    -- Corresponds to the @marker-end@ SVG attribute.
+    -- | Define the marker used for the end of the line.
+    -- Correspond to the `marker-end` attribute.
     _markerEnd :: !(Maybe ElementRef),
     _filterRef :: !(Maybe ElementRef)
   }
