@@ -93,9 +93,9 @@ checkCycledWithDump path =
     raw <- readFile path
     let cycledRaw = cycleSvg raw
 
-    tempRoot <- getCanonicalTemporaryDirectory
-    debugDir <- createTempDirectory tempRoot "reanimate-svg-debug_"
-    putStrLn $ "DEBUG: Files will be dumped to " ++ debugDir
+    -- tempRoot <- getCanonicalTemporaryDirectory
+    -- debugDir <- createTempDirectory tempRoot "reanimate-svg-debug_"
+    -- putStrLn $ "DEBUG: Files will be dumped to " ++ debugDir
     
     -- Get the actual bytestrings being compared
     golden <- sanitizeSvg raw
