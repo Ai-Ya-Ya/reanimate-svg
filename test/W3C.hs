@@ -92,13 +92,17 @@ checkCycledWithDump path =
   handle (\ErrorCall{} -> return False) $ do
     raw <- readFile path
     let cycledRaw = cycleSvg raw
+
+    tempRoot <- getCanonicalTemporaryDirectory
+    debugDir <- createTempDirectory tempRoot "reanimate-svg-debug_"
+    putStrLn $ "DEBUG: Files will be dumped to " ++ debugDir
     
     -- Get the actual bytestrings being compared
     golden <- sanitizeSvg raw
     cycled <- sanitizeSvg cycledRaw
 
     let baseName = takeBaseName path
-    let dumpDir = "test/debug_dump"
+    let dumpDir = debugDir 
     createDirectoryIfMissing True dumpDir
     
     -- 1. Dump the actual compared bytestrings as PNG files
