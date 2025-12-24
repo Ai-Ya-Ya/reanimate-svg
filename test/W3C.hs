@@ -102,7 +102,7 @@ checkCycledWithDump path =
     cycled <- sanitizeSvg cycledRaw
 
     let baseName = takeBaseName path
-    let dumpDir = debugDir 
+    let dumpDir = "test/debug_dump" 
     createDirectoryIfMissing True dumpDir
     
     -- 1. Dump the actual compared bytestrings as PNG files
@@ -130,7 +130,7 @@ checkCycledWithDump path =
 
 testSvg :: FilePath -> TestTree
 testSvg path = testCase (takeBaseName path) $
-  assert =<< checkCycled path
+  assert =<< checkCycledWithDump path
 
 -- Sanitize SVG using rsvg-convert
 sanitizeSvg :: String -> IO BS.ByteString
