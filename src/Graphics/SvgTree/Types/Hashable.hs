@@ -2,188 +2,286 @@
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE PatternSynonyms #-}
 {-# LANGUAGE StandaloneDeriving #-}
-{-# OPTIONS_GHC -Wno-orphans -O0 #-}
+{-# OPTIONS_GHC -Wno-orphans #-}
 
 module Graphics.SvgTree.Types.Hashable where
 
 import Codec.Picture (PixelRGBA8 (..))
 import Control.Lens
-import Data.Hashable
+import Data.Hashable 
+import Data.Hashable.Generic (genericHashWithSalt)
 import GHC.Generics (Generic)
 import Graphics.SvgTree.Types.Internal
 
 -- Orphan instances :(
 
 deriving instance Generic PixelRGBA8
+instance Hashable PixelRGBA8 where
+  hashWithSalt = genericHashWithSalt
 
-instance Hashable PixelRGBA8
+instance Hashable DrawAttributes where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable DrawAttributes
+instance Hashable Pattern where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Pattern
+instance Hashable Element where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Element
+instance Hashable ClipPath where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable ClipPath
+instance Hashable Mask where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Mask
+instance Hashable CoordinateUnits where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable CoordinateUnits
+instance Hashable TreeBranch where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable TreeBranch
+instance Hashable Group where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Group
+instance Hashable PreserveAspectRatio where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable PreserveAspectRatio
+instance Hashable Alignment where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Alignment
+instance Hashable MeetSlice where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable MeetSlice
+instance Hashable LinearGradient where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable LinearGradient
+instance Hashable Spread where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Spread
+instance Hashable Transformation where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Transformation
+instance Hashable GradientStop where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable GradientStop
+instance Hashable GradientPathCommand where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable GradientPathCommand
+instance Hashable Origin where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Origin
+instance Hashable Use where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Use
+instance Hashable Filter where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Filter
+instance Hashable FilterAttributes where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable FilterAttributes
+instance Hashable FilterElement where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable FilterElement
+instance Hashable Blend where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Blend
-deriving instance Hashable BlendMode
+instance Hashable BlendMode where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable ConvolveMatrix
+instance Hashable ConvolveMatrix where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Morphology
-deriving instance Hashable OperatorType
-deriving instance Hashable NumberOptionalNumber
+instance Hashable Morphology where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable SpecularLighting
+instance Hashable OperatorType where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable DropShadow
+instance Hashable NumberOptionalNumber where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable DiffuseLighting
+instance Hashable SpecularLighting where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Flood
+instance Hashable DropShadow where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Tile
+instance Hashable DiffuseLighting where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Offset
+instance Hashable Flood where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Merge
-deriving instance Hashable MergeNode
+instance Hashable Tile where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable ImageF
+instance Hashable Offset where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable ComponentTransfer
-deriving instance Hashable FuncType
-deriving instance Hashable FuncA
-deriving instance Hashable FuncR
-deriving instance Hashable FuncG
-deriving instance Hashable FuncB
+instance Hashable Merge where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable ColorMatrix
+instance Hashable MergeNode where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable FilterSource
+instance Hashable ImageF where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable ColorMatrixType
+instance Hashable ComponentTransfer where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Composite
+instance Hashable FuncType where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable CompositeOperator
+instance Hashable FuncA where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable DisplacementMap
+instance Hashable FuncR where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable ChannelSelector
+instance Hashable FuncG where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable GaussianBlur
+instance Hashable FuncB where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable EdgeMode
+instance Hashable ColorMatrix where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Turbulence
+instance Hashable FilterSource where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable StitchTiles
+instance Hashable ColorMatrixType where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable TurbulenceType
+instance Hashable Composite where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Path
+instance Hashable CompositeOperator where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable PathCommand
+instance Hashable DisplacementMap where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Circle
+instance Hashable ChannelSelector where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable PolyLine
+instance Hashable GaussianBlur where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Polygon
+instance Hashable EdgeMode where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Ellipse
+instance Hashable Turbulence where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Line
+instance Hashable StitchTiles where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Rectangle
+instance Hashable TurbulenceType where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable TextPath
+instance Hashable Path where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable TextPathMethod
+instance Hashable PathCommand where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable TextPathSpacing
+instance Hashable Circle where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Text
+instance Hashable PolyLine where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable TextAdjust
+instance Hashable Polygon where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable TextSpan
+instance Hashable Ellipse where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable TextInfo
+instance Hashable Line where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable TextSpanContent
+instance Hashable Rectangle where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Image
+instance Hashable TextPath where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable RadialGradient
+instance Hashable TextPathMethod where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable MeshGradient
+instance Hashable TextPathSpacing where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable MeshGradientType
+instance Hashable Text where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable MeshGradientRow
+instance Hashable TextAdjust where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable MeshGradientPatch
+instance Hashable TextSpan where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Marker
+instance Hashable TextInfo where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable MarkerOrientation
+instance Hashable TextSpanContent where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable MarkerUnit
+instance Hashable Image where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Overflow
+instance Hashable RadialGradient where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Document
+instance Hashable MeshGradient where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Texture
+instance Hashable MeshGradientType where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable Cap
+instance Hashable MeshGradientRow where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable LineJoin
+instance Hashable MeshGradientPatch where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable FillRule
+instance Hashable Marker where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable ElementRef
+instance Hashable MarkerOrientation where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable FontStyle
+instance Hashable MarkerUnit where
+  hashWithSalt = genericHashWithSalt
 
-deriving instance Hashable TextAnchor
+instance Hashable Overflow where
+  hashWithSalt = genericHashWithSalt
+
+instance Hashable Document where
+  hashWithSalt = genericHashWithSalt
+
+instance Hashable Texture where
+  hashWithSalt = genericHashWithSalt
+
+instance Hashable Cap where
+  hashWithSalt = genericHashWithSalt
+
+instance Hashable LineJoin where
+  hashWithSalt = genericHashWithSalt
+
+instance Hashable FillRule where
+  hashWithSalt = genericHashWithSalt
+
+instance Hashable ElementRef where
+  hashWithSalt = genericHashWithSalt
+
+instance Hashable FontStyle where
+  hashWithSalt = genericHashWithSalt
+
+instance Hashable TextAnchor where
+  hashWithSalt = genericHashWithSalt
 
 instance Hashable Tree where
   hashWithSalt s = hashWithSalt s . _treeHash
